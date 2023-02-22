@@ -1,5 +1,5 @@
 import "./App.css";
-import { Logo, MainMenu, SearchBar } from "./components";
+import { HeroImage, Logo, MainMenu, SearchBar } from "./components";
 export default function App() {
   return (
     <div className="App">
@@ -8,6 +8,9 @@ export default function App() {
         <MainMenu />
         <SearchBar />
       </header>
+      <main>
+        <HeroImage />
+      </main>
     </div>
   );
 }
