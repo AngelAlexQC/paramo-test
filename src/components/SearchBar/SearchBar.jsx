@@ -1,8 +1,7 @@
-import { useSearchBar } from "../hooks";
+import { useSearchBar } from "../../hooks";
 
 export default function SearchBar() {
-  const { value, results, searchOnChange, searchOnKeyDown, search } =
-    useSearchBar();
+  const { value, results, searchOnChange, search } = useSearchBar();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value) return;
@@ -13,18 +12,11 @@ export default function SearchBar() {
     <div className="SearchBar">
       <label htmlFor="search">Search the site</label>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={value}
-          onChange={searchOnChange}
-          onKeyDown={searchOnKeyDown}
-        />
+        <input type="text" value={value} onChange={searchOnChange} />
         <button onClick={search}>Search</button>
         <ul className="results">
-          {results.map((result,index) => (
-            <li key={index}>
-              {result}
-            </li>
+          {results.map((result, index) => (
+            <li key={index}>{result}</li>
           ))}
         </ul>
       </form>
