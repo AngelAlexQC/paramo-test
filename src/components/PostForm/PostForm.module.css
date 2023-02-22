@@ -1,0 +1,35 @@
+.form {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form div label {
+  margin-bottom: 0.5rem;
+}
+
+.form div input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form div textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  align-self: flex-start;
+  border-radius: 4px;
+}
