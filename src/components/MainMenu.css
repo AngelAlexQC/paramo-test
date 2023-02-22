@@ -5,4 +5,16 @@ ul {
   list-style: none;
   padding: 1rem;
   gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 1.25rem;
+}
+
+a {
+  text-decoration: none;
 }
