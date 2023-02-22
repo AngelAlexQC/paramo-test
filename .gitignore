@@ -5,3 +5,7 @@ node_modules
 yarn.lock
 package-lock.json
 pnpm-lock.yaml
+
+# Compiled files
+dist
+build
