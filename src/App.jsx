@@ -1,8 +1,12 @@
-import Logo from "./components/Logo";
+import "./App.css";
+import { Logo, MainMenu } from "./components";
 export default function App() {
   return (
-    <>
-      <Logo />
-    </>
+    <div className="App">
+      <header>
+        <Logo />
+        <MainMenu />
+      </header>
+    </div>
   );
 }
