@@ -1,4 +1,4 @@
-ul {
+.MainMenu {
   display: flex;
   width: 100%;
   justify-content: start;
@@ -9,12 +9,12 @@ ul {
   padding: 0;
 }
 
-li {
+.MainMenu li {
   font-weight: bold;
   text-transform: capitalize;
   font-size: 1.25rem;
 }
 
-a {
+.MainMenu li a {
   text-decoration: none;
 }

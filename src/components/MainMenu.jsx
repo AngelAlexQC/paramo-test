@@ -1,4 +1,4 @@
-import "./MainMenu.css";
+import styles from "./MainMenu.module.css";
 const ROUTES = [
   { path: "/", name: "Home" },
   { path: "/about", name: "About" },
@@ -8,7 +8,7 @@ const ROUTES = [
 
 export default function MainMenu() {
   return (
-    <ul>
+    <ul className={styles.MainMenu}>
       {ROUTES.map(({ path, name }) => (
         <li key={path}>
           <a href={path}>{name}</a>
