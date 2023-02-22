@@ -1,24 +1,31 @@
 import { useSearchBar } from "../../hooks";
-
+import styles from "./SearchBar.module.css";
 export default function SearchBar() {
-  const { value, results, searchOnChange, search } = useSearchBar();
+  const { value, results, searchOnChange } = useSearchBar();
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!value) return;
-    search();
   };
 
   return (
-    <div className="SearchBar">
+    <div className={styles.searchBar}>
       <label htmlFor="search">Search the site</label>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={value} onChange={searchOnChange} />
-        <button onClick={search}>Search</button>
-        <ul className="results">
-          {results.map((result, index) => (
-            <li key={index}>{result}</li>
-          ))}
-        </ul>
+        <input
+          type="text"
+          value={value}
+          onChange={searchOnChange}
+          name="search"
+          id="search"
+          placeholder="Enter keyword"
+        />
+        <button type="submit">Search</button>
+        {results.length > 0 && (
+          <ul className="results">
+            {results.map((result, index) => (
+              <li key={index}>{result}</li>
+            ))}
+          </ul>
+        )}
       </form>
     </div>
   );

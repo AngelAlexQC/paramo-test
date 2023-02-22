@@ -18,13 +18,16 @@ export default function useSearchBar() {
     setValue(event.target.value);
   };
 
-  const search = useCallback(() => {
-    if (!value) setResults([]);
+  useEffect(() => {
+    if (!value) {
+      setResults([]);
+      return;
+    }
     const results = records.filter((record) =>
       record.toLowerCase().includes(value.toLowerCase())
     );
     setResults(results);
   }, [value, records]);
 
-  return { value, results, searchOnChange, search };
+  return { value, results, searchOnChange };
 }
