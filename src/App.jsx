@@ -3,7 +3,9 @@ import { Logo, MainMenu, SearchBar } from "./components";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HomePage } from "./pages";
 
-const BrowserRouter = createBrowserRouter([]);
+const BrowserRouter = createBrowserRouter([
+  { path: "/", element: <HomePage /> },
+]);
 
 export default function App() {
   return (
