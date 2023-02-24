@@ -1,33 +1,43 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 export default function useSearchBar() {
   const [value, setValue] = useState("");
-  const [records, setRecords] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [results, setResults] = useState([]);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const resultsFromLocalStorage = localStorage.getItem("results");
-    if (!resultsFromLocalStorage) return;
-    const results = JSON.parse(resultsFromLocalStorage);
-    if (!Array.isArray(results)) return;
-    setRecords(results);
-  }, []);
-
-  const searchOnChange = (event) => {
-    setValue(event.target.value);
+  const handleValueChange = (e) => {
+    // prevent initial space
+    if (!value && e.target.value === " ") {
+      return;
+    }
+    setValue(e.target.value);
   };
 
   useEffect(() => {
-    if (!value) {
+    const posts = JSON.parse(localStorage.getItem("posts"));
+    setPosts(posts);
+  }, []);
+
+  useEffect(() => {
+    if (value === "") {
       setResults([]);
       return;
     }
-    const results = records.filter((record) =>
-      record.toLowerCase().includes(value.toLowerCase())
-    );
+    const results = posts.filter((post) => {
+      return (
+        post.title.toLowerCase().includes(value.toLowerCase()) ||
+        post.content.toLowerCase().includes(value.toLowerCase())
+      );
+    });
     setResults(results);
-  }, [value, records]);
+  }, [value]);
 
-  return { value, results, searchOnChange };
+  return {
+    value,
+    results: results.map((result) => ({
+      title: result.title,
+      content: result.content,
+    })),
+    searchOnChange: handleValueChange,
+  };
 }

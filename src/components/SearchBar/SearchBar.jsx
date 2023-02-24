@@ -20,10 +20,24 @@ export default function SearchBar() {
         />
         <button type="submit">Search</button>
         {results.length > 0 && (
-          <ul className="results">
-            {results.map((result, index) => (
-              <li key={index}>{result}</li>
-            ))}
+          <ul>
+            {results.map(({ title, content }, index) => {
+              const withoutTags = content.replace(/(<([^>]+)>)/gi, "");
+              const withoutTagsResum = withoutTags.slice(0, 100);
+              // highlight search term occurrences
+              const highlight = withoutTagsResum.replace(
+                new RegExp(value, "gi"),
+                (match) => `<strong>${match}</strong>`
+              );
+              const resum = `${highlight}...`;
+              return (
+                <li key={index}>
+                  <h3>{title}</h3>
+                  <p dangerouslySetInnerHTML={{ __html: resum }} />
+                  <a href="/">Read more</a>
+                </li>
+              );
+            })}
           </ul>
         )}
       </form>
