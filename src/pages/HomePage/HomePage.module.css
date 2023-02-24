@@ -38,6 +38,10 @@
   grid-gap: 1rem;
 }
 
+.video {
+  border: 0;
+}
+
 @media (min-width: 768px) {
   .homePage .feed {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
