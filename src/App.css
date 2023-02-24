@@ -38,3 +38,9 @@ body {
   align-items: flex-end;
   gap: 1rem;
 }
+
+@media (max-width: 768px) {
+  .App > header {
+    display: grid;
+  }
+}
