@@ -1,12 +1,9 @@
 import styles from "./Post.module.css";
-function Post({ title, content }) {
-  if (!title || !content) {
-    throw new Error("Post must have a title and content");
-  }
+function Post({ post = { title: "Post not found", content: "" } }) {
   return (
     <article className={styles.post}>
-      <h2>{title}</h2>
-      <p dangerouslySetInnerHTML={{ __html: content }} />
+      <h1>{post.title}</h1>
+      <p dangerouslySetInnerHTML={{ __html: post.content }} />
     </article>
   );
 }
