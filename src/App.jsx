@@ -1,5 +1,10 @@
 import "./App.css";
-import { HeroImage, Logo, MainMenu, SearchBar } from "./components";
+import { Logo, MainMenu, SearchBar } from "./components";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { HomePage } from "./pages";
+
+const BrowserRouter = createBrowserRouter([]);
+
 export default function App() {
   return (
     <div className="App">
@@ -8,9 +13,7 @@ export default function App() {
         <MainMenu />
         <SearchBar />
       </header>
-      <main>
-        <HeroImage />
-      </main>
+      <RouterProvider router={BrowserRouter} />
     </div>
   );
 }
