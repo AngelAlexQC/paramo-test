@@ -1,0 +1,23 @@
+.post {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 10px 0;
+  box-shadow: 0 0 5px #ccc;
+}
+
+.post h2 {
+  margin: 0;
+  margin-bottom: 1rem;
+  padding: 0;
+  font-size: 2rem;
+}
+
+.post p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.post p:first-child {
+  margin-top: 1rem;
+}
