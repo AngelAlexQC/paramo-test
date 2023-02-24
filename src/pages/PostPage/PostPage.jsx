@@ -5,6 +5,5 @@ export default function PostPage() {
   const { id } = useParams();
   const posts = JSON.parse(localStorage.getItem("posts"));
   const post = posts.find((post) => Number(post.id) === Number(id));
-  console.log(post);
   return post ? <Post post={post} /> : <div>Post not found</div>;
 }
