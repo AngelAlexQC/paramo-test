@@ -21,3 +21,8 @@
 .post p:first-child {
   margin-top: 1rem;
 }
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+}

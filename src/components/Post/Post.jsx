@@ -1,7 +1,7 @@
 import styles from "./Post.module.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaEdit } from "react-icons/fa";
 Post.propTypes = {
   post: PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -12,9 +12,12 @@ Post.propTypes = {
 function Post({ post = { title: "Post not found", content: "" } }) {
   return (
     <>
-      <nav>
+      <nav className={styles.nav}>
         <Link to="/blog">
           <FaArrowLeft /> Back to blog
+        </Link>
+        <Link to={`/post/${post.id}/edit`}>
+          <FaEdit /> Edit
         </Link>
       </nav>
       <article className={styles.post}>
