@@ -1,6 +1,7 @@
 import { usePosts } from "../../hooks";
 import { getHighlightedResume } from "../../utils";
 import styles from "./Blog.module.css";
+import { Link } from "react-router-dom";
 
 export default function Blog() {
   const posts = usePosts();
@@ -16,6 +17,7 @@ export default function Blog() {
                 __html: getHighlightedResume(post.content, "react"),
               }}
             />
+            <Link to={`/post/${post.id}`}>Read more</Link>
           </article>
         ))}
       </section>
