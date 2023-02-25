@@ -2,7 +2,9 @@ import "./App.css";
 import { Logo, MainMenu, SearchBar } from "./components";
 import { CustomBrowserRouter } from "./Router";
 import {
+  AboutPage,
   Blog,
+  ContactPage,
   CreatePostPage,
   EditPostPage,
   HomePage,
@@ -24,6 +26,8 @@ export default function App() {
           <Route path="/post/:id" element={<PostPage />} />
           <Route path="/post/:id/edit" element={<EditPostPage />} />
           <Route path="/post/create" element={<CreatePostPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<div>404</div>} />
         </Routes>
       </div>
