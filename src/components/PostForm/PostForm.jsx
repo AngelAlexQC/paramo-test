@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 import styles from "./PostForm.module.css";
+import PropTypes from "prop-types";
+
+PostForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  post: PropTypes.shape({
+    title: PropTypes.string,
+    content: PropTypes.string,
+  }),
+};
 function PostForm({ onSubmit, post = {} }) {
   if (typeof onSubmit !== "function") {
     throw new Error("PostForm must have an onSubmit function");

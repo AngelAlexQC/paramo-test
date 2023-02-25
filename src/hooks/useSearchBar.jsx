@@ -3,7 +3,7 @@ import usePosts from "./usePosts";
 
 export default function useSearchBar() {
   const [value, setValue] = useState("");
-  const { posts } = usePosts();
+  const posts = usePosts();
   const [results, setResults] = useState([]);
 
   const handleValueChange = (e) => {

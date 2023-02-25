@@ -1,4 +1,13 @@
 import styles from "./Post.module.css";
+import PropTypes from "prop-types";
+
+Post.propTypes = {
+  post: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+  }),
+};
+
 function Post({ post = { title: "Post not found", content: "" } }) {
   return (
     <article className={styles.post}>
