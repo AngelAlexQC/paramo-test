@@ -1,21 +1,38 @@
-import { RouterProvider } from "react-router-dom";
-import { createBrowserRouter } from "react-router-dom";
-import {
-  HomePage,
-  PostPage,
-  Blog,
-  EditPostPage,
-  CreatePostPage,
-} from "./pages";
+import { Router } from "react-router-dom";
+import { useRef, useState, useLayoutEffect } from "react";
+import { createBrowserHistory } from "history";
+import propTypes from "prop-types";
 
-const BrowserRouter = createBrowserRouter([
-  { path: "/", element: <HomePage /> },
-  { path: "/post/:id", element: <PostPage /> },
-  { path: "/post/:id/edit", element: <EditPostPage /> },
-  { path: "/post/create", element: <CreatePostPage /> },
-  { path: "blog", element: <Blog /> },
-]);
+// Can be used to manage navigation state outside of React components
+// ex : Redux, Axios interceptors, ...
+export const customHistory = createBrowserHistory();
 
-export default function Router() {
-  return <RouterProvider router={BrowserRouter} />;
+CustomBrowserRouter.propTypes = {
+  basename: propTypes.string,
+  children: propTypes.node,
+};
+
+export function CustomBrowserRouter({ basename, children }) {
+  const historyRef = useRef();
+  if (historyRef.current == null) {
+    historyRef.current = customHistory;
+  }
+  const history = historyRef.current;
+  const [state, setState] = useState({
+    action: history.action,
+    location: history.location,
+  });
+
+  useLayoutEffect(() => history.listen(setState), [history]);
+
+  return (
+    <Router
+      basename={basename}
+      location={state.location}
+      navigationType={state.action}
+      navigator={history}
+    >
+      {children}
+    </Router>
+  );
 }

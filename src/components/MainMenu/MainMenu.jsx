@@ -1,4 +1,7 @@
 import styles from "./MainMenu.module.css";
+
+import { Link } from "react-router-dom";
+
 const ROUTES = [
   { path: "/", name: "Home" },
   { path: "/about", name: "About" },
@@ -11,7 +14,7 @@ export default function MainMenu() {
     <ul className={styles.MainMenu}>
       {ROUTES.map(({ path, name }) => (
         <li key={path}>
-          <a href={path}>{name}</a>
+          <Link to={path}>{name}</Link>
         </li>
       ))}
     </ul>

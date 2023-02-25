@@ -1,16 +1,32 @@
 import "./App.css";
 import { Logo, MainMenu, SearchBar } from "./components";
-import Router from "./Router";
-
+import { CustomBrowserRouter } from "./Router";
+import {
+  Blog,
+  CreatePostPage,
+  EditPostPage,
+  HomePage,
+  PostPage,
+} from "./pages";
+import { Route, Routes } from "react-router-dom";
 export default function App() {
   return (
-    <div className="App">
-      <header>
-        <Logo />
-        <MainMenu />
-        <SearchBar />
-      </header>
-      <Router />
-    </div>
+    <CustomBrowserRouter>
+      <div className="App">
+        <header>
+          <Logo />
+          <MainMenu />
+          <SearchBar />
+        </header>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/post/:id" element={<PostPage />} />
+          <Route path="/post/:id/edit" element={<EditPostPage />} />
+          <Route path="/post/create" element={<CreatePostPage />} />
+          <Route path="*" element={<div>404</div>} />
+        </Routes>
+      </div>
+    </CustomBrowserRouter>
   );
 }
