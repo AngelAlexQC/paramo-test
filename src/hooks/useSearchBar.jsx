@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import usePosts from "./usePosts";
 
 export default function useSearchBar() {
   const [value, setValue] = useState("");
-  const [posts, setPosts] = useState([]);
+  const { posts } = usePosts();
   const [results, setResults] = useState([]);
 
   const handleValueChange = (e) => {
@@ -12,11 +13,6 @@ export default function useSearchBar() {
     }
     setValue(e.target.value);
   };
-
-  useEffect(() => {
-    const posts = JSON.parse(localStorage.getItem("posts"));
-    setPosts(posts);
-  }, []);
 
   useEffect(() => {
     if (value === "") {
