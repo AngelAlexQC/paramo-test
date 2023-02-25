@@ -1,4 +1,5 @@
 import { useSearchBar } from "../../hooks";
+import { getHighlightedResume } from "../../utils";
 import styles from "./SearchBar.module.css";
 export default function SearchBar() {
   const { value, results, searchOnChange } = useSearchBar();
@@ -22,18 +23,14 @@ export default function SearchBar() {
         {results.length > 0 && (
           <ul>
             {results.map(({ title, content }, index) => {
-              const withoutTags = content.replace(/(<([^>]+)>)/gi, "");
-              const withoutTagsResum = withoutTags.slice(0, 100);
-              // highlight search term occurrences
-              const highlight = withoutTagsResum.replace(
-                new RegExp(value, "gi"),
-                (match) => `<strong>${match}</strong>`
-              );
-              const resum = `${highlight}...`;
               return (
                 <li key={index}>
                   <h3>{title}</h3>
-                  <p dangerouslySetInnerHTML={{ __html: resum }} />
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: getHighlightedResume(content, value),
+                    }}
+                  />
                   <a href="/">Read more</a>
                 </li>
               );
@@ -44,3 +41,5 @@ export default function SearchBar() {
     </div>
   );
 }
+
+
