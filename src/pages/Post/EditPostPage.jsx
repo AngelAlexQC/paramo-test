@@ -16,9 +16,11 @@ export default function EditPostPage() {
     navigate(`/post/${post.id}`);
   };
 
-  return post ? (
-    <PostForm post={post} onSubmit={handleSubmit} />
-  ) : (
-    <div>Post not found</div>
+  return (
+    <>
+      <h1>Edit Post</h1>
+      {post && <PostForm onSubmit={handleSubmit} post={post} />}
+      {!post && <div>Post not found</div>}
+    </>
   );
 }

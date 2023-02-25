@@ -4,7 +4,7 @@ export default function usePosts() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const posts = JSON.parse(localStorage.getItem("posts"));
+    const posts = JSON.parse(localStorage.getItem("posts") || "[]");
     setPosts(posts);
   }, []);
 
