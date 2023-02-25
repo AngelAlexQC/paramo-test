@@ -9,7 +9,14 @@ PostForm.propTypes = {
     content: PropTypes.string,
   }),
 };
-function PostForm({ onSubmit, post = {} }) {
+function PostForm({
+  onSubmit,
+  post = {
+    id: 0,
+    title: "",
+    content: "",
+  },
+}) {
   if (typeof onSubmit !== "function") {
     throw new Error("PostForm must have an onSubmit function");
   }
@@ -27,7 +34,7 @@ function PostForm({ onSubmit, post = {} }) {
       return;
     }
     setContentError("");
-    onSubmit({ title, content });
+    onSubmit({ id: post.id, title, content });
   };
 
   return (

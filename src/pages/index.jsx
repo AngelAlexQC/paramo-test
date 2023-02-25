@@ -1,3 +1,4 @@
-export { default as HomePage } from "./HomePage/HomePage";
-export { default as PostPage } from "./PostPage/PostPage";
-export { default as Blog } from "./Blog/Blog";
+export { default as Blog } from './Blog/Blog';
+export { default as HomePage } from './Home/HomePage';
+export { default as EditPostPage } from './Post/EditPostPage';
+export { default as PostPage } from './Post/PostPage';
